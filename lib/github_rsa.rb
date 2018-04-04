@@ -92,5 +92,4 @@ module GithubRsa
   def self.decode_mpi(mpi_str)
     mpi_str.unpack('C*').inject(0) { |a, e| (a << 8) | e }
   end
-
 end
