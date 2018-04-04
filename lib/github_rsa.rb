@@ -9,10 +9,10 @@ module GithubRsa
   RSA_COMPONENTS = ['ssh-rsa', :e, :n]
   # The components in a openssh .pub / known_host DSA public key.
   DSA_COMPONENTS = ['ssh-dss', :p, :q, :g, :pub_key]
+
   def self.user_keys(user_name,api=API)
     url = "#{api}/users/#{user_name}/keys"
-    p "url is #{url}"
-    raw_keys = RestClient.get("#{api}/users/#{user_name}/keys")
+    raw_keys = RestClient.get(url)
     JSON.parse(raw_keys.body).first["key"].split[1]
   end
 

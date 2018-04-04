@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
+require 'github_rsa'
+
+
+encrypted = File.read(ARGV[0]).chomp
+key = File.read(ARGV[1])
+
+puts GithubRsa.decrypt(encrypted, key)
